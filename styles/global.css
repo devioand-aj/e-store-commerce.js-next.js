@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-xl;
+    @apply font-semibold;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  a {
+    @apply hover:text-gray-500;
+  }
+  html {
+    @apply font-montserrat;
+  }
+  .bg-secondary {
+    @apply text-black;
+  }
+  .bg-primary {
+    @apply text-secondary;
+  }
+  .active-shrink {
+    @apply transform;
+    @apply active:scale-95;
+    @apply cursor-pointer;
+    @apply transition-all;
+    @apply select-none;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply transition-all p-2 w-full bg-primary focus:outline-none transform active:scale-95 flex justify-center items-center;
+  }
+  .btn-secondary {
+    @apply transition-all p-2 w-full bg-secondary text-black focus:outline-none transform active:scale-95 flex justify-center items-center;
+  }
+}
+
+@screen md {
+  h1 {
+    @apply text-2xl;
+    @apply font-bold;
+  }
+  /* .container {
+    @apply max-width: '10%';
+  } */
+}
+
+/* @screen xs {
+  html {
+    @apply font-montserrat;
+    @apply bg-red-700;
+  }
+} */
+
+html {
+  font-size: 80%;
+}
+
+@media screen and (min-width: 410px) {
+  html {
+    font-size: 83%;
+  }
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+.all-child-my-2 > * {
+  margin: 1rem 0;
+}
+
+.background-content {
+  background-position: left;
+  background-size: cover;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(12, 19, 12, 0.712),
+      rgba(30, 31, 30, 0.678)
+    ),
+    url("/hero4.jpg");
+  position: relative;
+}
+
+.tap-highlight-none {
+  -webkit-tap-highlight-color: transparent;
+  background: none;
+  /* background-color: aquamarine; */
+}
+
+.drawer-left {
+  height: 100vh;
+  width: 16rem;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  animation: animateLeft 0.5s linear;
+  animation-timing-function: ease-in-out;
+}
+
+.drawer-right {
+  height: 100vh;
+  width: 16rem;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  animation: animateRight 0.5s linear;
+  animation-timing-function: ease-in-out;
+}
+
+.animate-zoomInOut {
+  animation: zoomInOut 0.5s;
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(0.8);
+  }
+  80% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes animateLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes animateRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
