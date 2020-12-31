@@ -57,6 +57,12 @@
   }
 } */
 
+input[type="text"],
+input[type="number"],
+select:focus {
+  font-size: inherit;
+}
+
 html {
   font-size: 80%;
 }
