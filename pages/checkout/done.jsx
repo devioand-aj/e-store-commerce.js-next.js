@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import { FcOk } from 'react-icons/fc';
 import Router from 'next/router';
 
