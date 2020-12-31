@@ -60,7 +60,7 @@
 input[type="text"],
 input[type="number"],
 select:focus {
-  font-size: 80%;
+  font-size: inherit;
 }
 
 html {
