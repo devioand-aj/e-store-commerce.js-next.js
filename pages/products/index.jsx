@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
+import Head from 'next/head';
 
 import { fetchAllProducts } from '../../services/products';
 import ProductsShowCase from '../../components/Pages/ProductsShowCase';
 
 export default function products({ products: staticProducts }) {
    return (
-      <ProductsShowCase label="All Products" products={staticProducts} />
+      <>
+         <Head>
+            <title>Products | E-Store</title>
+         </Head>
+         <ProductsShowCase label="All Products" products={staticProducts} />
+      </>
    )
 }
 
