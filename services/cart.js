@@ -13,7 +13,7 @@ export async function addItemServices(id, quantity) {
 
 export async function fetchCartServices() {
    try {
-      const cart = await commerce.cart.refresh();
+      const cart = await commerce.cart.retrieve();
       
       return { cart };
    } catch (err) {

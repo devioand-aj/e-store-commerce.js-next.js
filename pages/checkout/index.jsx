@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import _ from 'lodash';
 
@@ -38,7 +39,10 @@ export default function checkout({ note }) {
 
    return (
       <div className="flex flex-col px-3 py-6 items-center">
-         {/* <h2 className="text-center mb-2">{note}</h2> */}
+         <Head>
+            <title>Checkout | E-Store</title>
+            <meta name="viewport" content="initial-scale=1.0, width=device-width maximum-scale=1" />
+         </Head>
          {checkoutStep === 0 && <Loader size="sm" />}
          {isToast && <Toast toast={toast} isCloaseAble={false} />}
          {checkoutStep === 1 && <Form defaultValues={userDetail} />}

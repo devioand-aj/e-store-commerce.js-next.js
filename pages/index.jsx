@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 
 import { HeroSection } from '../components/Layouts';
 import { HorizontalShowcase } from '../components/Layouts/HorizontalShowcase';
@@ -27,6 +28,9 @@ export default function Home({ latestProducts, error }) {
   
   return (
     <>
+      <Head>
+        <title>Home | E-Store</title>
+      </Head>
       <HeroSection />
       <HorizontalShowcase variant="rounded" label="Categories" items={categories} toast={isToastCategory && toastCategory} onCloseToast={() => onCloseToastCategory(false, "")} />
       <HorizontalShowcase 

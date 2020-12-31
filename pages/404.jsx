@@ -1,15 +1,21 @@
+import Head from 'next/head';
 import { HorizontalShowcase } from '../components/Layouts/HorizontalShowcase';
 import { fetchLatestProducts } from '../services/products';
 
 export default function NotFound({ latestProducts, error }) {
    return (
-      <div className="container"> 
+      <>
+         <Head>
+            <title>404 | E-Store</title>
+         </Head>
+         <div className="container"> 
          <h1 className="text-center my-8">Page not found!</h1>
          {!error && <HorizontalShowcase 
                label="You may interested in!" 
                items={latestProducts} 
             />}
-      </div>
+          </div>
+      </>
    )
 }
 

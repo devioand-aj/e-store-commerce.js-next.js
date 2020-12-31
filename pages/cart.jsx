@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+import Head from 'next/head';
 
 import { CartWrapper } from '../components/Pages';
 import useCart from '../hooks/useCart';
@@ -26,7 +27,11 @@ export default function cart({ heading }) {
    }, [])
 
    return (
-      <CartWrapper>
+      <>
+         <Head>
+            <title>Cart | E-Store</title>
+         </Head>
+         <CartWrapper>
          <CartShowcase 
             heading={heading || "Your Cart"}
             isToast={isToast}
@@ -38,8 +43,9 @@ export default function cart({ heading }) {
             total={cartTotal}
             loadingOnUpdate={loadingOnUpdate}
             onDelete={({ itemId }) => onDeleteCartItem(itemId)}
-         />
-      </CartWrapper>
+            />
+         </CartWrapper>
+      </>
    )
 }
 

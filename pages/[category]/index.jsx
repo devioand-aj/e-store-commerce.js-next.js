@@ -1,9 +1,10 @@
 import React from 'react'
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Loader, Toast } from '../../components/Common';
 import { fetchProductsByCategory } from '../../services/products';
 import ProductsShowCase from '../../components/Pages/ProductsShowCase';
-import { getCategoryBySlug } from '../../services/categories';
+import { getCategoriesServices, getCategoryBySlug } from '../../services/categories';
 
 export default function Category({ 
       products: categorizedProducts, 
@@ -18,7 +19,12 @@ export default function Category({
 
    if (router.isFallback) return <Loader size="sm" className="mt-4" />
    return (
-      <ProductsShowCase label={category.name} products={categorizedProducts} />
+      <>
+         <Head>
+            <title>{category.name} | E-Store</title>
+         </Head>
+         <ProductsShowCase label={category.name} products={categorizedProducts} />
+      </>
    )
 }
 
@@ -42,11 +48,14 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
+   const { categories } = await getCategoriesServices();
+
+   const paths = categories.map(categorie => ({
+      params: { category: categorie.slug }
+   }))
+
    return {
-      paths: [
-         { params: { category: 'mobiles' } },
-         // { params: { category: 'headphones' } },
-      ],
+      paths,
       fallback: true
    }
 }

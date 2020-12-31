@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import { fetchAllProducts, fetchProduct } from '../../services/products';
 import { ProductDetail } from '../../components/Products';
@@ -10,9 +11,14 @@ export default function Product({ product, error }) {
    if (error) return <Toast className="mt-6" isCloaseAble={false} toast="Something went wrong wrong!!!" />
    if (router.isFallback) return <Loader size="sm" className="mt-10"/>;
    return (
-      <div className="container p-0 mt-4 sm:mt-6">
-         <ProductDetail product={product} />
-      </div>
+      <>
+         <Head>
+            <title>{product.name} | E-Store</title>
+         </Head>
+         <div className="container p-0 mt-4 sm:mt-6">
+            <ProductDetail product={product} />
+         </div>
+      </>
    )
 }
 

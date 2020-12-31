@@ -23,21 +23,26 @@ export default function Done({ latestProducts, error }) {
    if (isError) return null;
 
    return (
-      <div className="container mt-8 flex flex-col items-center">
-        <div className="flex items-center w-max bg-secondary px-8 py-4">
-            <FcOk className="text-4xl mr-2" />
-            <h1 className="">Your order is confirmed! &#127881;</h1>
+      <>
+         <Head>
+            <title>Checkout Done | E-Store</title>
+         </Head>
+         <div className="container mt-8 flex flex-col items-center">
+         <div className="flex items-center w-max bg-secondary px-8 py-4">
+               <FcOk className="text-4xl mr-2" />
+               <h1 className="text-2xl">Your order is confirmed! &#127881;</h1>
+            </div>
+            <div className="mt-4">
+               <h1 className="underline text-center mt-4">
+                  <Link href="/products"><a>Go Back to Products</a></Link>  
+               </h1>
+            </div>
          </div>
-         <div className="mt-4">
-            <h1 className="underline text-center mt-4">
-               <Link href="/products"><a>Go Back to Products</a></Link>  
-            </h1>
-            {!error && <HorizontalShowcase 
-               label="You may interested in!" 
-               items={latestProducts}  
-            />}
-         </div>
-      </div>
+         {!error && <HorizontalShowcase 
+            label="You may interested in!" 
+            items={latestProducts}  
+         />}
+      </>
    )
 }
 

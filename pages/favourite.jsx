@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Head from 'next/head';
 
 import useFavourite from '../hooks/useFavourite'
 import { FavouriteWrapper } from '../components/Pages';
@@ -16,7 +17,11 @@ export default function favourite({ heading }) {
    }, [])
 
    return (
-      <FavouriteWrapper>
+      <>
+         <Head>
+            <title>Favourites | E-Store</title>
+         </Head>
+         <FavouriteWrapper>
          <CartShowcase 
             heading={heading || "Favourites"}
             isToast={isToast}
@@ -26,8 +31,9 @@ export default function favourite({ heading }) {
             itemsCount={countFavouriteItems}
             items={favouriteItems}
             onDelete={({ productId }) => onRemoveFavouriteItem(productId)}
-         />
-      </FavouriteWrapper>
+            />
+         </FavouriteWrapper>
+      </>
    )
 }
 
