@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
  
 import { Button } from '../../Common'
@@ -11,18 +11,33 @@ export default function Payment() {
    const router = useRouter();
    const { checkoutToken } = useCheckout()
    const { onOrderConfirm } = useCheckout();
+   
+   const [loading, setLoading] = useState(false);
+
+   useEffect(() => {
+      console.log('useEffect')
+      return () => {
+         setLoading(false)
+      }
+   }, [])
 
    const handleConfirmOrder = async () => {
-      const { capturedOrder, error } = await onOrderConfirm();
-
+      setLoading(true);
+      
+      const { error } = await onOrderConfirm();
+      
       if (!error) router.replace("/checkout/done");
+
+      setTimeout(() => {
+         setLoading(false);
+      }, 3000);
    }
 
    return (
       <FormWrapper>
          <Items items={checkoutToken.live.line_items} />
          <Total total={checkoutToken.live.subtotal.formatted_with_code} />
-         <Button onClick={handleConfirmOrder} label="Done" className="my-4" />
+         <Button loading={loading} disabled={loading && true} onClick={handleConfirmOrder} label="Done" className="my-4" />
       </FormWrapper>
    )
 }
