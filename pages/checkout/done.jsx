@@ -29,9 +29,13 @@ export default function Done({ latestProducts, error }) {
             <title>Checkout Done | E-Store</title>
          </Head>
          <div className="container mt-8 flex flex-col items-center">
-         <div className="flex items-center w-max bg-secondary px-8 py-4">
+            <div className="flex items-center w-max bg-secondary px-8 py-4">
                <FcOk className="text-4xl mr-2" />
                <h1 className="text-2xl">Your order is confirmed! &#127881;</h1>
+            </div>
+            <div className="flex flex-col items-center justify-center">
+               <p>Email has been sent to your given email address</p>
+               <p>In case, if you don't find email in primary inbox. Please check "Promotions" section. </p>
             </div>
             <div className="mt-4">
                <h1 className="underline text-center mt-4">

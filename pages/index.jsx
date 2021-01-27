@@ -15,9 +15,9 @@ const items = [
 ]
 
 export default function Home({ latestProducts, error }) {
-  const { categories, isToastCategory, toastCategory, onCloseToastCategory } = useCategory();
   const [isToastLatestProducts, setIsToastLatestProducts] = useState(false);
   const [toastLatestProducts, setToastLatestProducts] = useState("");
+  const { categories, isToastCategory, toastCategory, onCloseToastCategory } = useCategory();
 
   useEffect(() => {
     if (!error) return;

@@ -6,7 +6,7 @@ export async function addItemServices(id, quantity) {
 
       return { cart };
    } catch (err) {
-      console.log({ err });
+      console.log('addItemServices', { err });
       return { error: err.message }
    }
 }
